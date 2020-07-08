@@ -18,8 +18,14 @@ template<class TD>
 bool Heap<TD>::_insertarMax(TD elemento)// elemento de valor mayor o de mayor importancia se encuentra en la raiz
 {
 	_arbol.push_back(elemento);// Inserta en la ultima posision del arreglo dinamico tipo vector
-	_corregirUp();
-	return true;
+	return _corregirUp();
+}
+
+template<class TD>
+bool Heap<TD>::_insertarMin(TD elemento)
+{
+	_arbol.push_back(elemento);
+	return _corregirDown();
 }
 
 template<class TD>

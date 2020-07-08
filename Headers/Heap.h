@@ -8,6 +8,7 @@ class Heap
 public:
 	Heap(TD);
 	bool _insertarMax(TD);
+	bool _insertarMin(TD);
 	void imprirArreglo();
 	TD getElem();
 private:
@@ -19,6 +20,7 @@ private:
 	// FUNCIONES AUXILIARES NO DISPONIBLES PARA EL USUARIO DE LA CLASE \\
 
 	bool _corregirUp();
+	bool _corregirDown();
 
 };
 
