@@ -15,6 +15,14 @@ inline Heap<TD>::Heap(TD elemento)
 }
 
 template<class TD>
+Heap<TD>::~Heap()
+{
+	_arbol.clear();
+	_arbol.~vector();
+	return;
+}
+
+template<class TD>
 bool Heap<TD>::insertarMax(TD elemento)// elemento de valor mayor o de mayor importancia se encuentra en la raiz
 {
 	_arbol.push_back(elemento);// Inserta en la ultima posision del arreglo dinamico tipo vector
@@ -28,7 +36,6 @@ bool Heap<TD>::eliminarMax()
 		return false;
 	else
 	{
-		//_arbol.erase(_arbol.begin()+1);//para borrar la posion 1 del arreglo, que es donde se guarda la raiz del arbol
 		_arbol[1] = _arbol.back();// Se asigna el ultimo elemento del arreglo o vector a la raiz del arbol
 		_arbol.pop_back();// elimino el ultimo elemento del arbol.
 		if (vacio())
@@ -44,6 +51,24 @@ bool Heap<TD>::insertarMin(TD elemento)
 {
 	_arbol.push_back(elemento);
 	return _corregirDown();
+}
+
+template<class TD>
+bool Heap<TD>::elminarMin()
+{
+	if (vacio())
+		return false;
+	else
+	{
+		_arbol[1] = _arbol.back();// Se asigna el ultimo elemento del arreglo o vector a la raiz del arbol
+		_arbol.pop_back();// elimino el ultimo elemento del arbol.
+		if (vacio())
+			return true;
+		else
+			return _repararEliminarDown();
+
+	}
+	return false;
 }
 
 template<class TD>

@@ -117,3 +117,73 @@ bool Heap<TD>::_corregirDown()
 	}
 	return false;
 }
+
+template<class TD>
+bool Heap<TD>::_repararEliminarDown()
+{
+	if (_arbol.size() == 2)//Significa que solo hay un nodo en el arbol, por eso no hay nada que reparar
+		return true;
+	else
+	{
+		int index = 1;
+		int padre = index; //raiz del arbol
+		int hijoIzq = index * 2;// En esta parte siempre va tener hijo izquierdo
+		int hijoDer = 0;
+		if ((index * 2 + 1) < _arbol.size())//para saber que si tiene hijo derecho
+			hijoDer = index * 2 + 1;
+		else
+			hijoDer = hijoIzq;//Como no tiene hijo derecho le asigno cualquier valor
+
+		do
+		{
+			if (_arbol[hijoIzq] <= _arbol[hijoDer])
+			{
+				if (_arbol[padre] <= _arbol[hijoIzq])
+					return true;// Se comprueba que si semantiene las propiedades de heap
+				else
+				{
+					TD aux = _arbol[padre];
+					_arbol[padre] = _arbol[hijoIzq];
+					_arbol[hijoIzq] = aux;
+					index *= 2;// Para mover el nodo raiz al siguiente nodo que se deba de revisar
+					padre = index;
+					if (index * 2 < _arbol.size())// Revisa si hay mas datos en el arreglo
+						hijoIzq = index * 2;
+					else
+						return true;
+					if ((index * 2 + 1) < _arbol.size())
+						hijoDer = index * 2 + 1;
+					else
+						hijoDer = hijoIzq;
+
+				}
+
+			}
+			else
+			{
+				if (_arbol[padre] <= _arbol[hijoDer])
+					return true;
+				else
+				{
+					TD aux = _arbol[padre];
+					_arbol[padre] = _arbol[hijoDer];
+					_arbol[hijoDer] = aux;
+					index *= 2 + 1;// Para mover el nodo raiz al siguiente nodo que se deba de revisar
+					padre = index;
+					if (index * 2 < _arbol.size())// Revisa si hay mas datos en el arreglo
+						hijoIzq = index * 2;
+					else
+						return true;
+					if ((index * 2 + 1) < _arbol.size())
+						hijoDer = index * 2 + 1;
+					else
+						hijoDer = hijoIzq;
+				}
+			}
+		} while (index < _arbol.size());
+
+		return false;
+	}
+
+	return false;
+}

@@ -7,9 +7,11 @@ class Heap
 {
 public:
 	Heap(TD);
+	~Heap();
 	bool insertarMax(TD);
 	bool eliminarMax();
 	bool insertarMin(TD);
+	bool elminarMin();
 	bool vacio();
 	void imprirArreglo();
 	TD getElem();
@@ -24,6 +26,7 @@ private:
 	bool _corregirUp();
 	bool _repararEliminarUp();
 	bool _corregirDown();
+	bool _repararEliminarDown();
 
 
 };
