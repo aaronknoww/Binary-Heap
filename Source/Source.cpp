@@ -13,21 +13,35 @@ using namespace std;
 
 int main()
 {
-
-	Heap<int> arbol(10);
-
-	//arbol._insertarMax(8);
-	//arbol._insertarMax(7);
-	//arbol._insertarMax(9);
-
-	arbol._insertarMin(11);
-	arbol._insertarMin(6);
-	arbol._insertarMin(7);
-	arbol._insertarMin(8);
-
-	cout << "\nEl Arbol guardado hasta el momento es " <<endl;
-	arbol.imprirArreglo();
+	Heap<int> arbolMax{ 10 }, arbolMin{ 1 };
 	
+	arbolMax.insertarMax(7);
+	arbolMax.insertarMax(8);
+	arbolMax.insertarMax(9);
+	arbolMax.insertarMax(15);
+	arbolMax.insertarMax(3);
+	arbolMax.insertarMax(1);
+	arbolMax.insertarMax(2);
+	arbolMax.insertarMax(25);
+	arbolMax.insertarMax(-1);
+	arbolMax.insertarMax(18);
+	arbolMax.insertarMax(44);
+	arbolMax.insertarMax(200);
+	
+	cout << "\nEl Arbol up guardado hasta el momento es " <<endl;
+	arbolMax.imprirArreglo();
+	arbolMax.eliminarMax();
+	arbolMax.imprirArreglo();
+	arbolMax.eliminarMax();
+	arbolMax.imprirArreglo();
+	arbolMax.eliminarMax();
+	arbolMax.imprirArreglo();
+	arbolMax.eliminarMax();
+	arbolMax.imprirArreglo();
+	arbolMax.eliminarMax();
+	arbolMax.imprirArreglo();
+	arbolMax.eliminarMax();
+	arbolMax.imprirArreglo();
 
 
 	system("pause > null");
